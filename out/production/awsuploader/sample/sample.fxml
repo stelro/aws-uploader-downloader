@@ -60,6 +60,9 @@
                   <Button fx:id="fileOpenButton" mnemonicParsing="false" onAction="#getFilePath" prefHeight="25.0" prefWidth="145.0" text="Open File" GridPane.rowIndex="6" />
                   <Label fx:id="pathLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitAction" text="Submit" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Label fx:id="label2" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#killApplication" text="exit" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                </children>
             </GridPane>
          </bottom></BorderPane>

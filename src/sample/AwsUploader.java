@@ -1,64 +1,70 @@
 package sample;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.event.ProgressEvent;
+import com.amazonaws.event.ProgressListener;
+import com.amazonaws.services.s3.transfer.TransferManager;
+import com.amazonaws.services.s3.transfer.Upload;
 
 import java.io.File;
-import java.io.IOException;
+
 
 public class AwsUploader extends Thread {
 
-    private static String bucketName; //= "awsdowup";
+    private static String bucketName = "awsdowup";
     private static String keyName = "AKIAILD6GOHVWNDH5XTA";
     private BasicAWSCredentials awsCreds;
+    private File file;
+    private long progressStatus;
 
-    AwsUploader(String passedBucketName) {
-        bucketName = passedBucketName;
+
+    public void setFileName(File passedFile) {
+        file = passedFile;
     }
 
-    public void uploadFile(File passedFile) throws IOException {
+    public void uploadFile() throws InterruptedException {
 
         awsCreds = new BasicAWSCredentials("AKIAIMRXS7J2TGSJR6CQ","51W3QxeKy8Xg42PiQeP4PU/VmL6u502bJHcefh3l");
-        AmazonS3 s3client = new AmazonS3Client(awsCreds);
-
-        try {
-
-            System.out.println("Uploading a new object from a file");
-            s3client.putObject(new PutObjectRequest(
-                    bucketName,keyName,passedFile));
+        TransferManager tr = new TransferManager(awsCreds);
+        Upload upload = tr.upload(bucketName, file.getName(), file);
 
 
-        } catch (AmazonServiceException ase) {
+        upload.addProgressListener(new ProgressListener() {
+            // This method is called periodically as your transfer progresses
+            public void progressChanged(ProgressEvent progressEvent) {
 
-            System.out.println("Caught an AmazonServiceException, which " +
-                    "means your request made it " +
-                    "to Amazon S3, but was rejected with an error response" +
-                    " for some reason.");
-            System.out.println("Error Message:    " + ase.getMessage());
-            System.out.println("HTTP Status Code: " + ase.getStatusCode());
-            System.out.println("AWS Error Code:   " + ase.getErrorCode());
-            System.out.println("Error Type:       " + ase.getErrorType());
-            System.out.println("Request ID:       " + ase.getRequestId());
+                System.out.println(upload.getProgress().getPercentTransferred() + "%");
 
-        }catch (AmazonClientException ace) {
+                progressStatus = upload.getProgress().getBytesTransferred();
 
-            System.out.println("Caught an AmazonClientException, which " +
-                    "means the client encountered " +
-                    "an internal error while trying to " +
-                    "communicate with S3, " +
-                    "such as not being able to access the network.");
-            System.out.println("Error Message: " + ace.getMessage());
-        }
 
+
+                if (progressEvent.getEventCode() == ProgressEvent.COMPLETED_EVENT_CODE) {
+                    System.out.println("Upload complete!!!");
+                }
+            }
+        });
+
+        // waitForCompletion blocks the current thread until the transfer completes
+        // and will throw an AmazonClientException or AmazonServiceException if
+        // anything went wrong.
+        upload.waitForCompletion();
     }
+
+    public void getAwsProgressStatus(long someval) {
+        someval =  progressStatus;
+    }
+
 
     public void run() {
 
+        try {
+            uploadFile();
+            Thread.sleep(50);
+
+        } catch (InterruptedException e) {
+
+        }
     }
 
 }
