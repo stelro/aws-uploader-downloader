@@ -1,6 +1,7 @@
 package stel;
 
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.event.ProgressEvent;
 import com.amazonaws.event.ProgressListener;
 import com.amazonaws.services.s3.transfer.TransferManager;
@@ -12,7 +13,6 @@ import java.io.File;
 public class AwsUploader extends Thread {
 
     private static String bucketName = "awsdowup";
-    private static String keyName = "AKIAILD6GOHVWNDH5XTA";
     private BasicAWSCredentials awsCreds;
     private File file;
     private long progressStatus;
@@ -24,8 +24,8 @@ public class AwsUploader extends Thread {
 
     public void uploadFile() throws InterruptedException {
 
-        awsCreds = new BasicAWSCredentials("AKIAIMRXS7J2TGSJR6CQ","51W3QxeKy8Xg42PiQeP4PU/VmL6u502bJHcefh3l");
-        TransferManager tr = new TransferManager(awsCreds);
+        //awsCreds = new BasicAWSCredentials("AKIAIMRXS7J2TGSJR6CQ","51W3QxeKy8Xg42PiQeP4PU/VmL6u502bJHcefh3l");
+        TransferManager tr = new TransferManager(new ProfileCredentialsProvider());
         Upload upload = tr.upload(bucketName, file.getName(), file);
 
 

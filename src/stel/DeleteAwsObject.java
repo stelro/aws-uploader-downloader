@@ -4,6 +4,7 @@ package stel;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.*;
@@ -20,7 +21,7 @@ public class DeleteAwsObject {
     }
 
     public void deleteObject() throws IOException {
-        AmazonS3 s3Client = new AmazonS3Client(new BasicAWSCredentials("AKIAIMRXS7J2TGSJR6CQ","51W3QxeKy8Xg42PiQeP4PU/VmL6u502bJHcefh3l"));
+        AmazonS3 s3Client = new AmazonS3Client(new ProfileCredentialsProvider());
         try {
             s3Client.deleteObject(new DeleteObjectRequest(bucketName, keyName));
         } catch (AmazonServiceException ase) {

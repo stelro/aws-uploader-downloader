@@ -21,8 +21,6 @@ public class DownloadAwsObject {
 
     S3ObjectInputStream ogogo;
 
-    BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAIMRXS7J2TGSJR6CQ","51W3QxeKy8Xg42PiQeP4PU/VmL6u502bJHcefh3l");
-
     public S3ObjectInputStream getFile() {
 
         return ogogo;
@@ -30,28 +28,8 @@ public class DownloadAwsObject {
     }
 
     public void downloadObject(File filepath,String filename) throws IOException {
-        AmazonS3 s3client = new AmazonS3Client(new BasicAWSCredentials("AKIAIMRXS7J2TGSJR6CQ","51W3QxeKy8Xg42PiQeP4PU/VmL6u502bJHcefh3l"));
+        AmazonS3 s3client = new AmazonS3Client(new ProfileCredentialsProvider());
         try {
-            System.out.println("Downloading an object");
-            S3Object s3object = s3client.getObject(new GetObjectRequest(
-                    bucketName, filename));
-            System.out.println("Content-Type: "  +
-                    s3object.getObjectMetadata().getContentType());
-            displayTextInputStream(s3object.getObjectContent());
-
-            // Get a range of bytes from an object.
-
-            GetObjectRequest rangeObjectRequest = new GetObjectRequest(
-                    bucketName, filename);
-
-//            rangeObjectRequest.setRange(0, 10);
-//            S3Object objectPortion = s3client.getObject(rangeObjectRequest);
-//
-//            System.out.println("Printing bytes retrieved.");
-//            displayTextInputStream(objectPortion.getObjectContent());
-
-//            ogogo = s3object.getObjectContent();
-//            IOUtils.copy(ogogo, new FileOutputStream(filepath));
 
             s3client.getObject(new GetObjectRequest(bucketName, filename),
                     new File(String.valueOf(filepath)));

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,7 +24,6 @@ import java.io.*;
 
 import javafx.scene.control.Label;
 
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Controller  {
 
@@ -34,6 +34,9 @@ public class Controller  {
     @FXML private TableColumn<ListOnlineItems, String> filenameColumn;
     @FXML private TableColumn<ListOnlineItems, String> sizeColumn;
     @FXML private TableColumn<ListOnlineItems, String> ownerColumn;
+    @FXML private Button downloadButton;
+    @FXML private Button deleteButton;
+    @FXML private Button uploadFileButton;
     private String filePath;
     private static Stage primaryStage;
     private File file;
@@ -55,6 +58,9 @@ public class Controller  {
         filenameColumn.setCellValueFactory(new PropertyValueFactory<>("fileName"));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("fileSize"));
         ownerColumn.setCellValueFactory(new PropertyValueFactory<>("fileOwner"));
+        downloadButton.setDisable(true);
+        deleteButton.setDisable(true);
+        uploadFileButton.setDisable(true);
 
     }
 
@@ -62,6 +68,7 @@ public class Controller  {
        final FileChooser fileChooser = new FileChooser();
        file = fileChooser.showOpenDialog(primaryStage);
        if (file != null) {
+           uploadFileButton.setDisable(false);
             filePath = file.getAbsolutePath();
             pathLabel.setText(filePath);
         }
@@ -137,11 +144,7 @@ public class Controller  {
 
     @FXML public void downloadAction(ActionEvent event) throws IOException {
 
-
-        String filename = String.valueOf(tableView.getSelectionModel().getSelectedItem().getFileName());
-
-        if (filename != null) {
-
+            String filename = String.valueOf(tableView.getSelectionModel().getSelectedItem().getFileName());
             FileChooser fileChooser = new FileChooser();
             DownloadAwsObject aws = new DownloadAwsObject();
 
@@ -152,10 +155,6 @@ public class Controller  {
 
             File filepath = fileChooser.showSaveDialog(primaryStage);
             aws.downloadObject(filepath,filename);
-        } else {
-            System.out.println("Not selected");
-        }
-
 
     }
 
@@ -166,6 +165,16 @@ public class Controller  {
         bucketItems.listItems();
         data = bucketItems.getData();
         tableView.setItems(data);
+
+        if(!tableView.getItems().isEmpty()) {
+
+            downloadButton.setDisable(false);
+            deleteButton.setDisable(false);
+        }
+        else {
+            downloadButton.setDisable(true);
+            deleteButton.setDisable(true);
+        }
     }
 
 }
