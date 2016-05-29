@@ -1,59 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.0" prefWidth="414.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stel.aboutController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="588.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stel.aboutController">
    <children>
-      <BorderPane prefHeight="289.0" prefWidth="414.0">
-         <bottom>
-            <GridPane prefHeight="140.0" prefWidth="414.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="92.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="228.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="85.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+      <BorderPane prefHeight="310.0" prefWidth="586.0">
+         <left>
+            <VBox prefHeight="310.0" prefWidth="78.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="23.0" prefWidth="127.0" text="AWS S3 up-down" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="Consolas" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="20.0" prefWidth="91.0" text="Version 1.0.1 " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Label prefHeight="20.0" prefWidth="267.0" text="Copyright © 2016 Stelmach Rostislav" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                  <Label prefHeight="20.0" prefWidth="119.0" text="All rights reserved." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                  <Label prefHeight="20.0" prefWidth="217.0" text="ro@dotstel.net  |  www.dotstel.net" textFill="#5555ff" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-               </children>
-            </GridPane>
-         </bottom>
-         <top>
-            <VBox prefHeight="149.0" prefWidth="414.0" BorderPane.alignment="CENTER">
-               <children>
-                  <GridPane prefHeight="143.0" prefWidth="414.0">
+                  <GridPane prefHeight="310.0" prefWidth="85.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="168.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="133.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="0.0" prefWidth="9.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="69.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="43.0" minHeight="0.0" prefHeight="12.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="72.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ImageView fitHeight="75.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
                               <Image url="@icon.png" />
                            </image>
@@ -62,7 +36,27 @@
                   </GridPane>
                </children>
             </VBox>
-         </top>
+         </left>
+         <right>
+            <VBox prefHeight="310.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane prefHeight="292.0" prefWidth="500.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="582.0" minWidth="10.0" prefWidth="16.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="582.0" minWidth="10.0" prefWidth="566.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="3.0" prefWidth="20.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="278.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="282.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextArea editable="false" prefHeight="277.0" prefWidth="495.0" text="Copyright 2016 Stelmach Rostislav&#10;&#10;stelmach.ro@gmail.com || http://dotstel.net&#10;&#10;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#10;you may not use this file except in compliance with the License.&#10;You may obtain a copy of the License at&#10;&#10;http://www.apache.org/licenses/LICENSE-2.0&#10;&#10;Unless required by applicable law or agreed to in writing, software&#10;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#10;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#10;See the License for the specific language governing permissions and&#10;limitations under the License.&#10;&#10;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>

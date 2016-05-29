@@ -67,7 +67,7 @@ public class Controller implements Initializable {
        if (file != null) {
            uploadFileButton.setDisable(false);
             filePath = file.getAbsolutePath();
-           printText(filePath);
+           printText("File to upload: " + filePath);
 
 
 
@@ -88,7 +88,6 @@ public class Controller implements Initializable {
         aws = new AwsUploader();
         aws.setFileName(file);
         aws.start();
-        //uploadThreadRunning = true;
 
     }
 

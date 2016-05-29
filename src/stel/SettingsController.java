@@ -35,12 +35,13 @@ public class SettingsController {
 
             path = "C:" + File.separator + "Users" + File.separator + System.getProperty("user.name") + File.separator + ".aws" +
                     File.separator + "credentials";
-            labelFile.setText("win");
+            MainModel.getInstance().print("Operating System : Windows");
 
         } else if (isUnix()) {
 
             path =  properties.get("user.home").toString() + properties.get("file.separator").toString()  + ".aws" +
                     properties.get("file.separator").toString()  + "credentials";
+            MainModel.getInstance().print("Operating System : Unix/Linux");
 
 
         }
@@ -48,13 +49,12 @@ public class SettingsController {
          file = new File(path);
 
         if(file.exists() && !file.isDirectory()) {
-            //labelFile.setText("Credential Exists");
-            MainModel.getInstance().setText("Cred Exsist");
+            MainModel.getInstance().setText("Credential Exsist");
 
 
         } else {
-            labelFile.setText("File Not Found");
-            MainModel.getInstance().setText("Cred Exsist");
+            MainModel.getInstance().setText("Credential Not Found");
+            MainModel.getInstance().setText("You should enter new Credentials's");
         }
 
     }

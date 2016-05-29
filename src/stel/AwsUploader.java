@@ -33,7 +33,7 @@ public class AwsUploader implements Runnable {
             // This method is called periodically as your transfer progresses
             public void progressChanged(ProgressEvent progressEvent) {
 
-                MainModel.getInstance().print(Math.round(upload.getProgress().getPercentTransferred()) + "%");
+                MainModel.getInstance().print(Math.round(upload.getProgress().getPercentTransferred()) + " %");
 
                 if (progressEvent.getEventCode() == ProgressEvent.COMPLETED_EVENT_CODE) {
                     MainModel.getInstance().print("Upload complete!!!");
