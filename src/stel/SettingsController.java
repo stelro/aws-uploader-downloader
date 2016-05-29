@@ -2,6 +2,7 @@ package stel;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -21,26 +22,39 @@ public class SettingsController {
     private String path;
     private File file;
     private static String OS = System.getProperty("os.name").toLowerCase();
+    java.util.Properties properties = System.getProperties();
+
+
+
 
     public void initialize() {
+
 
 
         if (isWindows()) {
 
             path = "C:" + File.separator + "Users" + File.separator + System.getProperty("user.name") + File.separator + ".aws" +
-                    File.separator + "credentials ";
+                    File.separator + "credentials";
+            labelFile.setText("win");
+
         } else if (isUnix()) {
 
-            path = "~" + File.separator + ".aws" + File.separator + "credentials ";
+            path =  properties.get("user.home").toString() + properties.get("file.separator").toString()  + ".aws" +
+                    properties.get("file.separator").toString()  + "credentials";
+
+
         }
 
          file = new File(path);
 
-
         if(file.exists() && !file.isDirectory()) {
-            labelFile.setText("Credential Exists");
+            //labelFile.setText("Credential Exists");
+            MainModel.getInstance().setText("Cred Exsist");
+
+
         } else {
             labelFile.setText("File Not Found");
+            MainModel.getInstance().setText("Cred Exsist");
         }
 
     }

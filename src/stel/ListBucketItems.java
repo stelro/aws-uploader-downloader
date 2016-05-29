@@ -51,22 +51,22 @@ public class ListBucketItems {
             } while(result.isTruncated() == true );
 
         } catch (AmazonServiceException ase) {
-            System.out.println("Caught an AmazonServiceException, " +
+            MainModel.getInstance().textOnArea("Caught an AmazonServiceException, " +
                     "which means your request made it " +
                     "to Amazon S3, but was rejected with an error response " +
                     "for some reason.");
-            System.out.println("Error Message:    " + ase.getMessage());
-            System.out.println("HTTP Status Code: " + ase.getStatusCode());
-            System.out.println("AWS Error Code:   " + ase.getErrorCode());
-            System.out.println("Error Type:       " + ase.getErrorType());
-            System.out.println("Request ID:       " + ase.getRequestId());
+            MainModel.getInstance().textOnArea("Error Message:    " + ase.getMessage());
+            MainModel.getInstance().textOnArea("HTTP Status Code: " + ase.getStatusCode());
+            MainModel.getInstance().textOnArea("AWS Error Code:   " + ase.getErrorCode());
+            MainModel.getInstance().textOnArea("Error Type:       " + ase.getErrorType());
+            MainModel.getInstance().textOnArea("Request ID:       " + ase.getRequestId());
         } catch (AmazonClientException ace) {
-            System.out.println("Caught an AmazonClientException, " +
+            MainModel.getInstance().textOnArea("Caught an AmazonClientException, " +
                     "which means the client encountered " +
                     "an internal error while trying to communicate" +
                     " with S3, " +
                     "such as not being able to access the network.");
-            System.out.println("Error Message: " + ace.getMessage());
+            MainModel.getInstance().textOnArea("Error Message: " + ace.getMessage());
         }
     }
 

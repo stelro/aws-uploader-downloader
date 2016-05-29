@@ -24,16 +24,17 @@ public class DeleteAwsObject {
         AmazonS3 s3Client = new AmazonS3Client(new ProfileCredentialsProvider());
         try {
             s3Client.deleteObject(new DeleteObjectRequest(bucketName, keyName));
+            MainModel.getInstance().textOnArea(keyName + " Object Deleted.");
         } catch (AmazonServiceException ase) {
-            System.out.println("Caught an AmazonServiceException.");
-            System.out.println("Error Message:    " + ase.getMessage());
-            System.out.println("HTTP Status Code: " + ase.getStatusCode());
-            System.out.println("AWS Error Code:   " + ase.getErrorCode());
-            System.out.println("Error Type:       " + ase.getErrorType());
-            System.out.println("Request ID:       " + ase.getRequestId());
+            MainModel.getInstance().textOnArea("Caught an AmazonServiceException.");
+            MainModel.getInstance().textOnArea("Error Message:    " + ase.getMessage());
+            MainModel.getInstance().textOnArea("HTTP Status Code: " + ase.getStatusCode());
+            MainModel.getInstance().textOnArea("AWS Error Code:   " + ase.getErrorCode());
+            MainModel.getInstance().textOnArea("Error Type:       " + ase.getErrorType());
+            MainModel.getInstance().textOnArea("Request ID:       " + ase.getRequestId());
         } catch (AmazonClientException ace) {
-            System.out.println("Caught an AmazonClientException.");
-            System.out.println("Error Message: " + ace.getMessage());
+            MainModel.getInstance().textOnArea("Caught an AmazonClientException.");
+            MainModel.getInstance().textOnArea("Error Message: " + ace.getMessage());
         }
     }
 }

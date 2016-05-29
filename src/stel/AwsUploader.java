@@ -15,7 +15,6 @@ public class AwsUploader extends Thread {
     private static String bucketName = "awsdowup";
     private BasicAWSCredentials awsCreds;
     private File file;
-    private long progressStatus;
 
 
     public void setFileName(File passedFile) {
@@ -24,7 +23,7 @@ public class AwsUploader extends Thread {
 
     public void uploadFile() throws InterruptedException {
 
-        //awsCreds = new BasicAWSCredentials("AKIAIMRXS7J2TGSJR6CQ","51W3QxeKy8Xg42PiQeP4PU/VmL6u502bJHcefh3l");
+
         TransferManager tr = new TransferManager(new ProfileCredentialsProvider());
         Upload upload = tr.upload(bucketName, file.getName(), file);
 
@@ -33,14 +32,10 @@ public class AwsUploader extends Thread {
             // This method is called periodically as your transfer progresses
             public void progressChanged(ProgressEvent progressEvent) {
 
-                System.out.println(upload.getProgress().getPercentTransferred() + "%");
-
-                progressStatus = upload.getProgress().getBytesTransferred();
-
-
+                MainModel.getInstance().textOnArea(Math.round(upload.getProgress().getPercentTransferred()) + "%");
 
                 if (progressEvent.getEventCode() == ProgressEvent.COMPLETED_EVENT_CODE) {
-                    System.out.println("Upload complete!!!");
+                    MainModel.getInstance().textOnArea("Upload complete!!!");
                 }
             }
         });

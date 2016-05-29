@@ -1,9 +1,11 @@
 package stel;
 
 
+import com.sun.org.apache.xml.internal.security.Init;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,9 +16,11 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class Controller  {
+public class Controller implements Initializable {
 
 
     @FXML private Label pathLabel;
@@ -44,7 +48,8 @@ public class Controller  {
         primaryStage = passedStage;
     }
 
-    public void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
         uploadThreadRunning = false;
         filenameColumn.setCellValueFactory(new PropertyValueFactory<>("fileName"));
@@ -53,6 +58,11 @@ public class Controller  {
         downloadButton.setDisable(true);
         deleteButton.setDisable(true);
         uploadFileButton.setDisable(true);
+        MainModel.getInstance().setTextArea(textArea);
+
+
+
+
 
     }
 
@@ -69,12 +79,14 @@ public class Controller  {
         }
     }
 
-    public void printText(String text) {
+    public  void printText(String text) {
 
         textArea.setWrapText(true);
         textArea.setPrefRowCount(10);
         textArea.appendText(text + " \n");
+
     }
+
 
 
     @FXML public void submitAction(ActionEvent event) throws InterruptedException, IOException {
@@ -123,6 +135,8 @@ public class Controller  {
         stage.setScene(new Scene(root1));
         stage.setResizable(false);
         stage.show();
+        printText(MainModel.getInstance().getText());
+
 
     }
 
