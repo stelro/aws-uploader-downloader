@@ -17,7 +17,6 @@ import com.amazonaws.util.IOUtils;
 public class DownloadAwsObject {
 
     private static String bucketName = "awsdowup";
-    private static String key        = "PersonList.xls";
 
     S3ObjectInputStream ogogo;
 

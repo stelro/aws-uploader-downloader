@@ -1,18 +1,12 @@
 package stel;
 
-import com.amazonaws.util.IOUtils;
-import com.sun.istack.internal.logging.Logger;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
@@ -20,9 +14,6 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.*;
-
-
-import javafx.scene.control.Label;
 
 
 public class Controller  {
@@ -37,6 +28,7 @@ public class Controller  {
     @FXML private Button downloadButton;
     @FXML private Button deleteButton;
     @FXML private Button uploadFileButton;
+    @FXML private TextArea textArea;
     private String filePath;
     private static Stage primaryStage;
     private File file;
@@ -70,8 +62,18 @@ public class Controller  {
        if (file != null) {
            uploadFileButton.setDisable(false);
             filePath = file.getAbsolutePath();
-            pathLabel.setText(filePath);
+           printText(filePath);
+
+
+
         }
+    }
+
+    public void printText(String text) {
+
+        textArea.setWrapText(true);
+        textArea.setPrefRowCount(10);
+        textArea.appendText(text + " \n");
     }
 
 
