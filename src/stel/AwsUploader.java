@@ -10,11 +10,12 @@ import com.amazonaws.services.s3.transfer.Upload;
 import java.io.File;
 
 
-public class AwsUploader extends Thread {
+public class AwsUploader implements Runnable {
 
     private static String bucketName = "awsdowup";
     private BasicAWSCredentials awsCreds;
     private File file;
+    private Thread thread;
 
 
     public void setFileName(File passedFile) {
@@ -32,10 +33,11 @@ public class AwsUploader extends Thread {
             // This method is called periodically as your transfer progresses
             public void progressChanged(ProgressEvent progressEvent) {
 
-                MainModel.getInstance().textOnArea(Math.round(upload.getProgress().getPercentTransferred()) + "%");
+                MainModel.getInstance().print(Math.round(upload.getProgress().getPercentTransferred()) + "%");
 
                 if (progressEvent.getEventCode() == ProgressEvent.COMPLETED_EVENT_CODE) {
-                    MainModel.getInstance().textOnArea("Upload complete!!!");
+                    MainModel.getInstance().print("Upload complete!!!");
+                    //thread.interrupt();
                 }
             }
         });
@@ -56,6 +58,11 @@ public class AwsUploader extends Thread {
         } catch (InterruptedException e) {
 
         }
+    }
+
+    public void start() {
+        thread = new Thread(this);
+        thread.start();
     }
 
 }

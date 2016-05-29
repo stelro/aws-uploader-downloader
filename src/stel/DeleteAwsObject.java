@@ -11,10 +11,11 @@ import com.amazonaws.services.s3.model.*;
 
 import java.io.IOException;
 
-public class DeleteAwsObject {
+public class DeleteAwsObject implements Runnable {
 
     private static String bucketName = "awsdowup";
     private static String keyName;
+    private Thread thread;
 
     public void setKeyName(String fName) {
         keyName = fName;
@@ -24,17 +25,34 @@ public class DeleteAwsObject {
         AmazonS3 s3Client = new AmazonS3Client(new ProfileCredentialsProvider());
         try {
             s3Client.deleteObject(new DeleteObjectRequest(bucketName, keyName));
-            MainModel.getInstance().textOnArea(keyName + " Object Deleted.");
+            MainModel.getInstance().print(keyName + " Object Deleted.");
         } catch (AmazonServiceException ase) {
-            MainModel.getInstance().textOnArea("Caught an AmazonServiceException.");
-            MainModel.getInstance().textOnArea("Error Message:    " + ase.getMessage());
-            MainModel.getInstance().textOnArea("HTTP Status Code: " + ase.getStatusCode());
-            MainModel.getInstance().textOnArea("AWS Error Code:   " + ase.getErrorCode());
-            MainModel.getInstance().textOnArea("Error Type:       " + ase.getErrorType());
-            MainModel.getInstance().textOnArea("Request ID:       " + ase.getRequestId());
+            MainModel.getInstance().print("Caught an AmazonServiceException.");
+            MainModel.getInstance().print("Error Message:    " + ase.getMessage());
+            MainModel.getInstance().print("HTTP Status Code: " + ase.getStatusCode());
+            MainModel.getInstance().print("AWS Error Code:   " + ase.getErrorCode());
+            MainModel.getInstance().print("Error Type:       " + ase.getErrorType());
+            MainModel.getInstance().print("Request ID:       " + ase.getRequestId());
         } catch (AmazonClientException ace) {
-            MainModel.getInstance().textOnArea("Caught an AmazonClientException.");
-            MainModel.getInstance().textOnArea("Error Message: " + ace.getMessage());
+            MainModel.getInstance().print("Caught an AmazonClientException.");
+            MainModel.getInstance().print("Error Message: " + ace.getMessage());
         }
+    }
+
+    public void run() {
+
+        try {
+            deleteObject();
+            Thread.sleep(50);
+        } catch (IOException e) {
+
+        } catch (InterruptedException e) {
+
+        }
+    }
+
+    public void start() {
+        thread = new Thread(this);
+        thread.start();
     }
 }

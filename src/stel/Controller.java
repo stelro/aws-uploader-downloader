@@ -37,7 +37,6 @@ public class Controller implements Initializable {
     private static Stage primaryStage;
     private File file;
     private AwsUploader aws;
-    private Thread awsUploadThread;
     private boolean uploadThreadRunning;
     private ObservableList<ListOnlineItems> data;
     private DeleteAwsObject awsobj;
@@ -56,13 +55,9 @@ public class Controller implements Initializable {
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("fileSize"));
         ownerColumn.setCellValueFactory(new PropertyValueFactory<>("fileOwner"));
         downloadButton.setDisable(true);
-        deleteButton.setDisable(true);
+        //deleteButton.setDisable(true);
         uploadFileButton.setDisable(true);
         MainModel.getInstance().setTextArea(textArea);
-
-
-
-
 
     }
 
@@ -91,17 +86,14 @@ public class Controller implements Initializable {
 
     @FXML public void submitAction(ActionEvent event) throws InterruptedException, IOException {
         aws = new AwsUploader();
-        awsUploadThread = new Thread(aws);
         aws.setFileName(file);
-        awsUploadThread.start();
-        uploadThreadRunning = true;
+        aws.start();
+        //uploadThreadRunning = true;
 
     }
 
     @FXML public void killApplication(ActionEvent event) {
 
-        if (uploadThreadRunning)
-            awsUploadThread.interrupt();
         System.exit(0);
 
     }
@@ -109,7 +101,7 @@ public class Controller implements Initializable {
 
     @FXML public void showItemsAction(ActionEvent event) throws IOException {
 
-        listingObjectsLabel.setText("Listing Objects...");
+        MainModel.getInstance().print("Listing Objects...");
         listBucketItems();
 
     }
@@ -119,8 +111,8 @@ public class Controller implements Initializable {
         awsobj = new DeleteAwsObject();
         String filename = String.valueOf(tableView.getSelectionModel().getSelectedItem().getFileName());
         awsobj.setKeyName(filename);
-        awsobj.deleteObject();
-        listingObjectsLabel.setText("Refresing...");
+        awsobj.start();
+        MainModel.getInstance().print("Deleting and Refresing...");
         listBucketItems();
 
     }
@@ -178,19 +170,21 @@ public class Controller implements Initializable {
     private void listBucketItems() throws IOException {
 
         bucketItems = new ListBucketItems("awsdowup");
-        bucketItems.listItems();
+        bucketItems.start();
         data = bucketItems.getData();
         tableView.setItems(data);
+
 
         if(!tableView.getItems().isEmpty()) {
 
             downloadButton.setDisable(false);
-            deleteButton.setDisable(false);
+            //deleteButton.setDisable(false);
         }
         else {
             downloadButton.setDisable(true);
-            deleteButton.setDisable(true);
+            //deleteButton.setDisable(true);
         }
+
     }
 
 }

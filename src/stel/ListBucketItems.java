@@ -3,7 +3,6 @@ package stel;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
@@ -16,27 +15,31 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 
 
-public class ListBucketItems {
+public class ListBucketItems implements Runnable {
 
     private static String bucketName;
     private ObservableList<ListOnlineItems> data;
+    private Thread thread;
 
     ListBucketItems(String passedBucketName) {
         bucketName = passedBucketName;
         data = FXCollections.observableArrayList();
     }
 
-    public void listItems() throws IOException {
+    public void listItems() throws IOException, InterruptedException {
 
 
         AmazonS3 s3client = new AmazonS3Client(new ProfileCredentialsProvider());
 
         try {
 
+
+
             final ListObjectsV2Request req = new ListObjectsV2Request().withBucketName(bucketName).withMaxKeys(2);
             ListObjectsV2Result result;
 
             do {
+
 
                 result = s3client.listObjectsV2(req);
 
@@ -48,25 +51,29 @@ public class ListBucketItems {
 
                 req.setContinuationToken(result.getNextContinuationToken());
 
-            } while(result.isTruncated() == true );
+
+
+            } while(result.isTruncated());
+
+            MainModel.getInstance().print("All Objects Loaded");
 
         } catch (AmazonServiceException ase) {
-            MainModel.getInstance().textOnArea("Caught an AmazonServiceException, " +
+            MainModel.getInstance().print("Caught an AmazonServiceException, " +
                     "which means your request made it " +
                     "to Amazon S3, but was rejected with an error response " +
                     "for some reason.");
-            MainModel.getInstance().textOnArea("Error Message:    " + ase.getMessage());
-            MainModel.getInstance().textOnArea("HTTP Status Code: " + ase.getStatusCode());
-            MainModel.getInstance().textOnArea("AWS Error Code:   " + ase.getErrorCode());
-            MainModel.getInstance().textOnArea("Error Type:       " + ase.getErrorType());
-            MainModel.getInstance().textOnArea("Request ID:       " + ase.getRequestId());
+            MainModel.getInstance().print("Error Message:    " + ase.getMessage());
+            MainModel.getInstance().print("HTTP Status Code: " + ase.getStatusCode());
+            MainModel.getInstance().print("AWS Error Code:   " + ase.getErrorCode());
+            MainModel.getInstance().print("Error Type:       " + ase.getErrorType());
+            MainModel.getInstance().print("Request ID:       " + ase.getRequestId());
         } catch (AmazonClientException ace) {
-            MainModel.getInstance().textOnArea("Caught an AmazonClientException, " +
+            MainModel.getInstance().print("Caught an AmazonClientException, " +
                     "which means the client encountered " +
                     "an internal error while trying to communicate" +
                     " with S3, " +
                     "such as not being able to access the network.");
-            MainModel.getInstance().textOnArea("Error Message: " + ace.getMessage());
+            MainModel.getInstance().print("Error Message: " + ace.getMessage());
         }
     }
 
@@ -74,5 +81,21 @@ public class ListBucketItems {
         return data;
     }
 
+    public void run() {
+
+        try {
+            listItems();
+            Thread.sleep(50);
+        } catch (IOException e) {
+
+        } catch (InterruptedException e) {
+
+        }
+    }
+
+    public void start() {
+        thread = new Thread(this);
+        thread.start();
+    }
 
 }

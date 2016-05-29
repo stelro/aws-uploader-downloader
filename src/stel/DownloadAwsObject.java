@@ -20,29 +20,29 @@ public class DownloadAwsObject {
         AmazonS3 s3client = new AmazonS3Client(new ProfileCredentialsProvider());
         try {
 
-            MainModel.getInstance().textOnArea("Downloading an object");
+            MainModel.getInstance().print("Downloading an object");
 
             s3client.getObject(new GetObjectRequest(bucketName, filename),
                     new File(String.valueOf(filepath)));
 
 
         } catch (AmazonServiceException ase) {
-            MainModel.getInstance().textOnArea("Caught an AmazonServiceException, which" +
+            MainModel.getInstance().print("Caught an AmazonServiceException, which" +
                     " means your request made it " +
                     "to Amazon S3, but was rejected with an error response" +
                     " for some reason.");
-            MainModel.getInstance().textOnArea("Error Message:    " + ase.getMessage());
-            MainModel.getInstance().textOnArea("HTTP Status Code: " + ase.getStatusCode());
-            MainModel.getInstance().textOnArea("AWS Error Code:   " + ase.getErrorCode());
-            MainModel.getInstance().textOnArea("Error Type:       " + ase.getErrorType());
-            MainModel.getInstance().textOnArea("Request ID:       " + ase.getRequestId());
+            MainModel.getInstance().print("Error Message:    " + ase.getMessage());
+            MainModel.getInstance().print("HTTP Status Code: " + ase.getStatusCode());
+            MainModel.getInstance().print("AWS Error Code:   " + ase.getErrorCode());
+            MainModel.getInstance().print("Error Type:       " + ase.getErrorType());
+            MainModel.getInstance().print("Request ID:       " + ase.getRequestId());
         } catch (AmazonClientException ace) {
-            MainModel.getInstance().textOnArea("Caught an AmazonClientException, which means"+
+            MainModel.getInstance().print("Caught an AmazonClientException, which means"+
                     " the client encountered " +
                     "an internal error while trying to " +
                     "communicate with S3, " +
                     "such as not being able to access the network.");
-            MainModel.getInstance().textOnArea("Error Message: " + ace.getMessage());
+            MainModel.getInstance().print("Error Message: " + ace.getMessage());
         }
     }
 
