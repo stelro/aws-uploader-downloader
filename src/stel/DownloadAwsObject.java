@@ -11,19 +11,38 @@ import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 
 
-public class DownloadAwsObject {
+public class DownloadAwsObject implements Runnable {
 
     private static String bucketName = "awsdowup";
+    private Thread thread;
+    private File filepath;
+    private String filename;
+
+    public DownloadAwsObject(File passedFilePath, String passedFileName) {
+        filepath = passedFilePath;
+        filename = passedFileName;
+    }
 
 
-    public void downloadObject(File filepath,String filename) throws IOException {
+    public void downloadObject() throws IOException {
         AmazonS3 s3client = new AmazonS3Client(new ProfileCredentialsProvider());
         try {
 
-            MainModel.getInstance().print("Downloading an object");
+            MainModel.getInstance().print("Downloading " + filename + " from " + bucketName + " bucket!");
+
+
+            S3Object s3object = s3client.getObject(new GetObjectRequest(
+                    bucketName, filename));
+
+            MainModel.getInstance().print("Content-Type: "  +
+                    s3object.getObjectMetadata().getContentType());
 
             s3client.getObject(new GetObjectRequest(bucketName, filename),
                     new File(String.valueOf(filepath)));
+
+
+
+            MainModel.getInstance().print("Download Complete");
 
 
         } catch (AmazonServiceException ase) {
@@ -46,18 +65,21 @@ public class DownloadAwsObject {
         }
     }
 
-    private static void displayTextInputStream(InputStream input)
-            throws IOException {
-        // Read one text line at a time and display.
-        BufferedReader reader = new BufferedReader(new
-                InputStreamReader(input));
-        while (true) {
-            String line = reader.readLine();
-            if (line == null) break;
+    public void run() {
 
-            System.out.println("    " + line);
+        try {
+            downloadObject();
+            Thread.sleep(50);
+        } catch (IOException e) {
+
+        } catch (InterruptedException e) {
+
         }
-        System.out.println();
+    }
+
+    public void start() {
+        thread = new Thread(this);
+        thread.start();
     }
 
 }

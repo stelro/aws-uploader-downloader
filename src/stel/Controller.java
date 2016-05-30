@@ -54,7 +54,7 @@ public class Controller implements Initializable {
         filenameColumn.setCellValueFactory(new PropertyValueFactory<>("fileName"));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("fileSize"));
         ownerColumn.setCellValueFactory(new PropertyValueFactory<>("fileOwner"));
-        downloadButton.setDisable(true);
+        //downloadButton.setDisable(true);
         //deleteButton.setDisable(true);
         uploadFileButton.setDisable(true);
         MainModel.getInstance().setTextArea(textArea);
@@ -74,7 +74,7 @@ public class Controller implements Initializable {
         }
     }
 
-    public  void printText(String text) {
+    public void printText(String text) {
 
         textArea.setWrapText(true);
         textArea.setPrefRowCount(10);
@@ -153,7 +153,7 @@ public class Controller implements Initializable {
 
             String filename = String.valueOf(tableView.getSelectionModel().getSelectedItem().getFileName());
             FileChooser fileChooser = new FileChooser();
-            DownloadAwsObject aws = new DownloadAwsObject();
+
 
             fileChooser.setInitialFileName(filename);
 
@@ -161,7 +161,8 @@ public class Controller implements Initializable {
             fileChooser.getExtensionFilters().addAll(extFilter);
 
             File filepath = fileChooser.showSaveDialog(primaryStage);
-            aws.downloadObject(filepath,filename);
+            DownloadAwsObject aws = new DownloadAwsObject(filepath,filename);
+            aws.start();
 
     }
 
@@ -176,11 +177,11 @@ public class Controller implements Initializable {
 
         if(!tableView.getItems().isEmpty()) {
 
-            downloadButton.setDisable(false);
+            //downloadButton.setDisable(false);
             //deleteButton.setDisable(false);
         }
         else {
-            downloadButton.setDisable(true);
+            //downloadButton.setDisable(true);
             //deleteButton.setDisable(true);
         }
 

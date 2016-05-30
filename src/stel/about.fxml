@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,27 +9,28 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="588.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stel.aboutController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="363.0" prefWidth="403.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stel.aboutController">
    <children>
-      <BorderPane prefHeight="310.0" prefWidth="586.0">
-         <left>
-            <VBox prefHeight="310.0" prefWidth="78.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="362.0" prefWidth="403.0">
+         <top>
+            <VBox prefHeight="92.0" prefWidth="403.0" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane prefHeight="310.0" prefWidth="85.0">
+                  <GridPane prefHeight="97.0" prefWidth="403.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="0.0" prefWidth="9.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="69.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="1.0" prefWidth="162.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="268.0" minWidth="10.0" prefWidth="88.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="153.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="4.0" prefHeight="4.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="75.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ImageView fitHeight="74.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
                               <Image url="@icon.png" />
                            </image>
@@ -36,27 +39,25 @@
                   </GridPane>
                </children>
             </VBox>
-         </left>
-         <right>
-            <VBox prefHeight="310.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         </top>
+         <bottom>
+            <VBox prefHeight="272.0" prefWidth="403.0" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane prefHeight="292.0" prefWidth="500.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="582.0" minWidth="10.0" prefWidth="16.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="582.0" minWidth="10.0" prefWidth="566.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="3.0" prefWidth="20.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="278.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="282.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <Pane prefHeight="274.0" prefWidth="403.0">
                      <children>
-                        <TextArea editable="false" prefHeight="277.0" prefWidth="495.0" text="Copyright 2016 Stelmach Rostislav&#10;&#10;stelmach.ro@gmail.com || http://dotstel.net&#10;&#10;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#10;you may not use this file except in compliance with the License.&#10;You may obtain a copy of the License at&#10;&#10;http://www.apache.org/licenses/LICENSE-2.0&#10;&#10;Unless required by applicable law or agreed to in writing, software&#10;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#10;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#10;See the License for the specific language governing permissions and&#10;limitations under the License.&#10;&#10;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextArea editable="false" layoutX="14.0" layoutY="146.0" prefHeight="114.0" prefWidth="375.0" text="Copyright (c) 2016 Stelmach Rostislav&#10;&#10;Permission is hereby granted, free of charge, to any person obtaining a copy&#10;of this software and associated documentation files (the &quot;Software&quot;), to deal&#10;in the Software without restriction, including without limitation the rights&#10;to use, copy, modify, merge, publish, distribute, sublicense, and/or sell&#10;copies of the Software, and to permit persons to whom the Software is&#10;furnished to do so, subject to the following conditions:&#10;&#10;The above copyright notice and this permission notice shall be included in all&#10;copies or substantial portions of the Software.&#10;&#10;THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR&#10;IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,&#10;FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE&#10;AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER&#10;LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,&#10;OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE&#10;SOFTWARE.&#10;" />
+                        <Label layoutX="80.0" layoutY="6.0" prefHeight="18.0" prefWidth="245.0" text="Simple Aws Uploader-Downloader" />
+                        <Label layoutX="60.0" layoutY="49.0" prefHeight="18.0" prefWidth="278.0" text="Copyright © 2016 Stelmach Rostislav" />
+                        <Label layoutX="140.0" layoutY="27.0" prefHeight="18.0" prefWidth="106.0" text="Version 1.0.1" />
+                        <Label layoutX="75.0" layoutY="103.0" prefHeight="18.0" prefWidth="249.0" text="This product is licensed under the" />
+                        <Label layoutX="127.0" layoutY="121.0" prefHeight="18.0" prefWidth="145.0" text="MIT License Terms:" />
+                        <Hyperlink layoutX="61.0" layoutY="73.0" prefHeight="24.0" prefWidth="123.0" text="ro@dotstel.net" />
+                        <Hyperlink layoutX="206.0" layoutY="73.0" prefHeight="24.0" prefWidth="133.0" text="http://dotstel.net" />
                      </children>
-                  </GridPane>
+                  </Pane>
                </children>
             </VBox>
-         </right>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>
