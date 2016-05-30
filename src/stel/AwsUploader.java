@@ -12,7 +12,6 @@ import java.io.File;
 
 public class AwsUploader implements Runnable {
 
-    private static String bucketName = "awsdowup";
     private BasicAWSCredentials awsCreds;
     private File file;
     private Thread thread;
@@ -26,7 +25,7 @@ public class AwsUploader implements Runnable {
 
 
         TransferManager tr = new TransferManager(new ProfileCredentialsProvider());
-        Upload upload = tr.upload(bucketName, file.getName(), file);
+        Upload upload = tr.upload(MainModel.getInstance().getBucketName(), file.getName(), file);
 
 
         upload.addProgressListener(new ProgressListener() {

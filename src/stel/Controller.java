@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 
 public class Controller implements Initializable {
@@ -41,6 +42,12 @@ public class Controller implements Initializable {
     private ObservableList<ListOnlineItems> data;
     private DeleteAwsObject awsobj;
     private ListBucketItems bucketItems;
+    private String pathBucket;
+    private File fileBucket;
+    private static String OS = System.getProperty("os.name").toLowerCase();
+    java.util.Properties properties = System.getProperties();
+
+
 
 
     public static void setStage(Stage passedStage) throws IOException {
@@ -58,6 +65,47 @@ public class Controller implements Initializable {
         //deleteButton.setDisable(true);
         uploadFileButton.setDisable(true);
         MainModel.getInstance().setTextArea(textArea);
+
+
+        if (isWindows()) {
+
+
+            pathBucket = "C:" + File.separator + "Users" + File.separator + System.getProperty("user.name") + File.separator + ".aws" +
+                    File.separator + "bucketname";
+
+        } else if (isUnix()) {
+
+
+            pathBucket =  properties.get("user.home").toString() + properties.get("file.separator").toString()  + ".aws" +
+                    properties.get("file.separator").toString()  + "bucketname";
+
+        }
+
+        fileBucket = new File(pathBucket);
+
+        if(fileBucket.exists() && !fileBucket.isDirectory()) {
+
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(pathBucket));
+                String line = br.readLine();
+                StringBuilder sb = new StringBuilder();
+                sb.append(line);
+
+                MainModel.getInstance().setBucketName(sb.toString());
+                MainModel.getInstance().print("Backet name: " + sb.toString());
+
+            }catch (IOException e) {
+
+            }
+
+
+        } else {
+
+            MainModel.getInstance().setText("Backet Name Not Found");
+            MainModel.getInstance().setText("You should enter new BucketName");
+
+        }
+
 
     }
 
@@ -185,6 +233,14 @@ public class Controller implements Initializable {
             //deleteButton.setDisable(true);
         }
 
+    }
+
+    public static boolean isWindows() {
+        return (OS.indexOf("win") >= 0);
+    }
+
+    public static boolean isUnix() {
+        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
     }
 
 }

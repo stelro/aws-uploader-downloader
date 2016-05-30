@@ -13,7 +13,6 @@ import com.amazonaws.services.s3.model.S3Object;
 
 public class DownloadAwsObject implements Runnable {
 
-    private static String bucketName = "awsdowup";
     private Thread thread;
     private File filepath;
     private String filename;
@@ -28,16 +27,16 @@ public class DownloadAwsObject implements Runnable {
         AmazonS3 s3client = new AmazonS3Client(new ProfileCredentialsProvider());
         try {
 
-            MainModel.getInstance().print("Downloading " + filename + " from " + bucketName + " bucket!");
+            MainModel.getInstance().print("Downloading " + filename + " from " + MainModel.getInstance().getBucketName() + " bucket!");
 
 
             S3Object s3object = s3client.getObject(new GetObjectRequest(
-                    bucketName, filename));
+                    MainModel.getInstance().getBucketName(), filename));
 
             MainModel.getInstance().print("Content-Type: "  +
                     s3object.getObjectMetadata().getContentType());
 
-            s3client.getObject(new GetObjectRequest(bucketName, filename),
+            s3client.getObject(new GetObjectRequest(MainModel.getInstance().getBucketName(), filename),
                     new File(String.valueOf(filepath)));
 
 

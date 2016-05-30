@@ -11,6 +11,7 @@ public class MainModel {
     private final static MainModel instance = new MainModel();
     private SimpleStringProperty text = new SimpleStringProperty("");
     private TextArea textArea;
+    private SimpleStringProperty bucketName = new SimpleStringProperty("");
 
 
     public static MainModel getInstance() {
@@ -35,6 +36,15 @@ public class MainModel {
 
        Platform.runLater( () -> textArea.appendText(text + " \n"));
     }
+
+    public void setBucketName(String value) {
+        bucketName.set(value);
+    }
+
+    public String getBucketName() {
+        return bucketName.get();
+    }
+
 
     @Override
     public String toString() {

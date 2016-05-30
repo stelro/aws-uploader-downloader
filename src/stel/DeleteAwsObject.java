@@ -13,7 +13,6 @@ import java.io.IOException;
 
 public class DeleteAwsObject implements Runnable {
 
-    private static String bucketName = "awsdowup";
     private static String keyName;
     private Thread thread;
 
@@ -24,7 +23,7 @@ public class DeleteAwsObject implements Runnable {
     public void deleteObject() throws IOException {
         AmazonS3 s3Client = new AmazonS3Client(new ProfileCredentialsProvider());
         try {
-            s3Client.deleteObject(new DeleteObjectRequest(bucketName, keyName));
+            s3Client.deleteObject(new DeleteObjectRequest(MainModel.getInstance().getBucketName(), keyName));
             MainModel.getInstance().print(keyName + " Object Deleted.");
         } catch (AmazonServiceException ase) {
             MainModel.getInstance().print("Caught an AmazonServiceException.");
