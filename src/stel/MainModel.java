@@ -34,7 +34,7 @@ public class MainModel {
 
     public void print(String text) {
 
-       Platform.runLater( () -> textArea.appendText(text + " \n"));
+       Platform.runLater( () -> textArea.appendText("> " + text + " \n"));
     }
 
     public void setBucketName(String value) {
