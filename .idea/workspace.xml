@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/null" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/awsuploader/stel/aboutController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stel/aboutController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/~/.aws/credentials " afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/awsuploader/stel/AwsUploader.class" afterPath="$PROJECT_DIR$/out/production/awsuploader/stel/AwsUploader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/awsuploader/stel/Controller.class" afterPath="$PROJECT_DIR$/out/production/awsuploader/stel/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/awsuploader/stel/DeleteAwsObject.class" afterPath="$PROJECT_DIR$/out/production/awsuploader/stel/DeleteAwsObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/awsuploader/stel/SettingsController.class" afterPath="$PROJECT_DIR$/out/production/awsuploader/stel/SettingsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/awsuploader/stel/about.fxml" afterPath="$PROJECT_DIR$/out/production/awsuploader/stel/about.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/awsuploader/stel/settings.fxml" afterPath="$PROJECT_DIR$/out/production/awsuploader/stel/settings.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stel/AwsUploader.java" afterPath="$PROJECT_DIR$/src/stel/AwsUploader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stel/Controller.java" afterPath="$PROJECT_DIR$/src/stel/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stel/DeleteAwsObject.java" afterPath="$PROJECT_DIR$/src/stel/DeleteAwsObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stel/ListBucketItems.java" afterPath="$PROJECT_DIR$/src/stel/ListBucketItems.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stel/SettingsController.java" afterPath="$PROJECT_DIR$/src/stel/SettingsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stel/about.fxml" afterPath="$PROJECT_DIR$/src/stel/about.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stel/settings.fxml" afterPath="$PROJECT_DIR$/src/stel/settings.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,11 +64,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/stel/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+            <state relative-caret-position="224">
+              <caret line="107" column="55" selection-start-line="107" selection-start-column="55" selection-end-line="107" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListBucketItems.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ListBucketItems.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stel/ListBucketItems.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="610">
@@ -103,6 +87,20 @@
                 <element signature="e#3855#3856#0" expanded="true" />
                 <element signature="e#3911#3912#0" expanded="true" />
                 <element signature="e#3954#3955#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AwsUploader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/stel/AwsUploader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1965#1966#0" expanded="true" />
+                <element signature="e#2008#2009#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,9 +143,9 @@
         <option value="$PROJECT_DIR$/src/stel/DownloadAwsObject.java" />
         <option value="$PROJECT_DIR$/src/stel/DeleteAwsObject.java" />
         <option value="$PROJECT_DIR$/src/stel/SettingsController.java" />
+        <option value="$PROJECT_DIR$/src/stel/ListBucketItems.java" />
         <option value="$PROJECT_DIR$/src/stel/AwsUploader.java" />
         <option value="$PROJECT_DIR$/src/stel/Controller.java" />
-        <option value="$PROJECT_DIR$/src/stel/ListBucketItems.java" />
       </list>
     </option>
   </component>
@@ -753,12 +751,12 @@
       <workItem from="1464639038087" duration="15000" />
       <workItem from="1464900816297" duration="1444000" />
       <workItem from="1464996592953" duration="4000" />
-      <workItem from="1465122124769" duration="939000" />
+      <workItem from="1465122124769" duration="1189000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94082000" />
+    <option name="totallyTimeSpent" value="94332000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -770,7 +768,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
+    <frame x="0" y="24" width="1920" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -957,6 +955,8 @@
           <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1019,6 +1019,8 @@
           <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1063,6 +1065,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1093,6 +1097,8 @@
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1123,6 +1129,8 @@
           <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1153,6 +1161,8 @@
           <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1183,6 +1193,8 @@
           <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1321,16 +1333,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stel/AwsUploader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/stel/ListOnlineItems.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -1349,12 +1351,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stel/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/stel/AwsUploader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+        <state relative-caret-position="383">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1369,6 +1373,16 @@
             <element signature="e#3855#3856#0" expanded="true" />
             <element signature="e#3911#3912#0" expanded="true" />
             <element signature="e#3954#3955#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stel/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="107" column="55" selection-start-line="107" selection-start-column="55" selection-end-line="107" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

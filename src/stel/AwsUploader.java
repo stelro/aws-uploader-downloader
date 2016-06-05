@@ -6,6 +6,7 @@ import com.amazonaws.event.ProgressEvent;
 import com.amazonaws.event.ProgressListener;
 import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.Upload;
+import javafx.scene.control.Button;
 
 import java.io.File;
 
@@ -14,6 +15,7 @@ public class AwsUploader implements Runnable {
 
 
     private File file;
+    private Button uploadButton;
     private Thread thread;
 
 
@@ -36,7 +38,8 @@ public class AwsUploader implements Runnable {
 
                 if (progressEvent.getEventCode() == ProgressEvent.COMPLETED_EVENT_CODE) {
                     MainModel.getInstance().print("Upload complete!!!");
-                    //thread.interrupt();
+                    uploadButton.setDisable(true);
+
                 }
             }
         });
@@ -62,6 +65,10 @@ public class AwsUploader implements Runnable {
     public void start() {
         thread = new Thread(this);
         thread.start();
+    }
+
+    public void setUploadButton(Button passedButton) {
+        uploadButton = passedButton;
     }
 
 }

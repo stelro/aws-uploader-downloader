@@ -111,8 +111,6 @@ public class Controller implements Initializable {
             filePath = file.getAbsolutePath();
            printText("File to upload: " + filePath);
 
-
-
         }
     }
 
@@ -129,6 +127,7 @@ public class Controller implements Initializable {
     @FXML public void submitAction(ActionEvent event) throws InterruptedException, IOException {
         aws = new AwsUploader();
         aws.setFileName(file);
+        aws.setUploadButton(uploadFileButton);
         aws.start();
 
     }
