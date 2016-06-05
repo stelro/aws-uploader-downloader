@@ -31,7 +31,6 @@ public class SettingsController {
     public void initialize() {
 
 
-
         if (isWindows()) {
 
             pathCredentials = "C:" + File.separator + "Users" + File.separator + System.getProperty("user.name") + File.separator + ".aws" +

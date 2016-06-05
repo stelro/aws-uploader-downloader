@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
@@ -22,26 +24,25 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
 
-    @FXML private TableView<ListOnlineItems> tableView;
-    @FXML private TableColumn<ListOnlineItems, String> filenameColumn;
-    @FXML private TableColumn<ListOnlineItems, String> sizeColumn;
-    @FXML private TableColumn<ListOnlineItems, String> ownerColumn;
-    @FXML private Button downloadButton;
-    @FXML private Button deleteButton;
-    @FXML private Button uploadFileButton;
-    @FXML private TextArea textArea;
-    private String filePath;
-    private static Stage primaryStage;
-    private File file;
-    private AwsUploader aws;
-    private ObservableList<ListOnlineItems> data;
-    private DeleteAwsObject awsobj;
-    private ListBucketItems bucketItems;
-    private String pathBucket;
-    private File fileBucket;
-    private static String OS = System.getProperty("os.name").toLowerCase();
-    java.util.Properties properties = System.getProperties();
-
+    @FXML private TableView<ListOnlineItems>                tableView;
+    @FXML private TableColumn<ListOnlineItems, String>      filenameColumn;
+    @FXML private TableColumn<ListOnlineItems, String>      sizeColumn;
+    @FXML private TableColumn<ListOnlineItems, String>      ownerColumn;
+    @FXML private Button                                    downloadButton;
+    @FXML private Button                                    deleteButton;
+    @FXML private Button                                    uploadFileButton;
+    @FXML private TextArea                                  textArea;
+    private String                                          filePath;
+    private static Stage                                    primaryStage;
+    private File                                            file;
+    private AwsUploader                                     aws;
+    private ObservableList<ListOnlineItems>                 data;
+    private DeleteAwsObject                                 awsobj;
+    private ListBucketItems                                 bucketItems;
+    private String                                          pathBucket;
+    private File                                            fileBucket;
+    private static                                         String OS = System.getProperty("os.name").toLowerCase();
+    java.util.Properties                                     properties = System.getProperties();
 
 
 
@@ -95,11 +96,11 @@ public class Controller implements Initializable {
 
         } else {
 
-            MainModel.getInstance().setText("Backet Name Not Found");
-            MainModel.getInstance().setText("You should enter new BucketName");
+            MainModel.getInstance().print("Backet Name Not Found");
+            MainModel.getInstance().print("You should enter new BucketName");
+            MainModel.getInstance().print("Or Make new Account at Amazon S3 Clound Storage, and setup the Settings.");
 
         }
-
 
     }
 
@@ -169,7 +170,11 @@ public class Controller implements Initializable {
         stage.show();
         printText(MainModel.getInstance().getText());
 
+    }
 
+    @FXML public void closeMenuAction(ActionEvent event) {
+
+        System.exit(0);
     }
 
     @FXML public void aboutAction(ActionEvent event) throws IOException {
