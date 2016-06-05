@@ -1,13 +1,18 @@
 package stel;
 
+import com.amazonaws.HttpMethod;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.event.ProgressEvent;
 import com.amazonaws.event.ProgressListener;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.Upload;
 import javafx.scene.control.Button;
 
 import java.io.File;
+import java.net.URL;
 
 
 public class AwsUploader implements Runnable {
@@ -24,10 +29,22 @@ public class AwsUploader implements Runnable {
 
     public void uploadFile() throws InterruptedException {
 
+        AmazonS3 s3client = new AmazonS3Client(new ProfileCredentialsProvider());
 
         TransferManager tr = new TransferManager(new ProfileCredentialsProvider());
         Upload upload = tr.upload(MainModel.getInstance().getBucketName(), file.getName(), file);
 
+        java.util.Date expiration = new java.util.Date();
+        long milliseconds = expiration.getTime();
+        milliseconds += 1000 * 60 * 60; //Add 1 hour
+        expiration.setTime(milliseconds);
+
+        GeneratePresignedUrlRequest generatePresignedUrlRequest =
+                new GeneratePresignedUrlRequest(MainModel.getInstance().getBucketName(), file.getName());
+        generatePresignedUrlRequest.setMethod(HttpMethod.GET);
+        generatePresignedUrlRequest.setExpiration(expiration);
+
+        URL url = s3client.generatePresignedUrl(generatePresignedUrlRequest);
 
         upload.addProgressListener(new ProgressListener() {
             // This method is called periodically as your transfer progresses
@@ -37,6 +54,8 @@ public class AwsUploader implements Runnable {
 
                 if (progressEvent.getEventCode() == ProgressEvent.COMPLETED_EVENT_CODE) {
                     MainModel.getInstance().print("Upload complete!!!");
+                    MainModel.getInstance().print("URL to download the object item, url expires in 1 hour: ");
+                    MainModel.getInstance().print("Url: " + url);
                     uploadButton.setDisable(true);
 
                 }
