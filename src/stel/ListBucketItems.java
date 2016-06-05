@@ -11,6 +11,7 @@ import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 
@@ -19,6 +20,8 @@ public class ListBucketItems implements Runnable {
 
     private static String bucketName;
     private ObservableList<ListOnlineItems> data;
+    private Button downloadButton;
+    private Button deleteButton;
     private Thread thread;
 
     ListBucketItems(String passedBucketName) {
@@ -52,10 +55,17 @@ public class ListBucketItems implements Runnable {
                 req.setContinuationToken(result.getNextContinuationToken());
 
 
-
             } while(result.isTruncated());
 
-            MainModel.getInstance().print("All Objects Loaded");
+            if (data.isEmpty()) {
+                downloadButton.setDisable(true);
+                deleteButton.setDisable(true);
+                MainModel.getInstance().print("Bucket is empty!");
+            } else {
+                downloadButton.setDisable(false);
+                deleteButton.setDisable(false);
+                MainModel.getInstance().print("All Objects Loaded");
+            }
 
         } catch (AmazonServiceException ase) {
             MainModel.getInstance().print("Caught an AmazonServiceException, " +
@@ -96,6 +106,14 @@ public class ListBucketItems implements Runnable {
     public void start() {
         thread = new Thread(this);
         thread.start();
+    }
+
+    public void  setDownloadButton(Button passedButton) {
+        downloadButton = passedButton;
+    }
+
+    public void setDeleteButton(Button passedButton) {
+        deleteButton = passedButton;
     }
 
 }

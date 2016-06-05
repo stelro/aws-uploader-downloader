@@ -38,7 +38,6 @@
                   <Label prefHeight="17.0" prefWidth="103.0" text="Bucket Name:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label prefHeight="18.0" prefWidth="121.0" text="Access Key ID:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label prefHeight="18.0" prefWidth="121.0" text="Security Key:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="labelFile" prefHeight="20.0" prefWidth="102.0" text="df" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </right>

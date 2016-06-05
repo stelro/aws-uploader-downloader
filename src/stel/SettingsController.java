@@ -2,9 +2,7 @@ package stel;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -20,12 +18,10 @@ public class SettingsController {
     @FXML private PasswordField accessKeyField;
     @FXML private PasswordField securityKeyField;
     @FXML private TextField bucketName;
-    @FXML private Label labelFile;
     private String pathCredentials;
     private String pathBucket;
     private File fileCredentials;
     private File fileBucket;
-    private boolean settingsExsists;
     private static String OS = System.getProperty("os.name").toLowerCase();
     java.util.Properties properties = System.getProperties();
 
@@ -67,16 +63,6 @@ public class SettingsController {
         } else {
             MainModel.getInstance().setText("Credential Not Found");
             MainModel.getInstance().setText("You should enter new Credentials's");
-        }
-
-
-        if(fileBucket.exists() && !fileBucket.isDirectory()) {
-            MainModel.getInstance().setText("Bucket Name Exsist");
-
-
-        } else {
-            MainModel.getInstance().setText("Backet Name Not Found");
-            MainModel.getInstance().setText("You should enter new BucketName");
         }
 
     }

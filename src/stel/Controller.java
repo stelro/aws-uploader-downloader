@@ -1,7 +1,6 @@
 package stel;
 
 
-import com.sun.org.apache.xml.internal.security.Init;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,14 +17,11 @@ import javafx.event.ActionEvent;
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 
 public class Controller implements Initializable {
 
 
-    @FXML private Label pathLabel;
-    @FXML private Label listingObjectsLabel;
     @FXML private TableView<ListOnlineItems> tableView;
     @FXML private TableColumn<ListOnlineItems, String> filenameColumn;
     @FXML private TableColumn<ListOnlineItems, String> sizeColumn;
@@ -38,7 +34,6 @@ public class Controller implements Initializable {
     private static Stage primaryStage;
     private File file;
     private AwsUploader aws;
-    private boolean uploadThreadRunning;
     private ObservableList<ListOnlineItems> data;
     private DeleteAwsObject awsobj;
     private ListBucketItems bucketItems;
@@ -57,12 +52,11 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        uploadThreadRunning = false;
         filenameColumn.setCellValueFactory(new PropertyValueFactory<>("fileName"));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("fileSize"));
         ownerColumn.setCellValueFactory(new PropertyValueFactory<>("fileOwner"));
-        //downloadButton.setDisable(true);
-        //deleteButton.setDisable(true);
+        downloadButton.setDisable(true);
+        deleteButton.setDisable(true);
         uploadFileButton.setDisable(true);
         MainModel.getInstance().setTextArea(textArea);
 
@@ -218,20 +212,12 @@ public class Controller implements Initializable {
     private void listBucketItems() throws IOException {
 
         bucketItems = new ListBucketItems("awsdowup");
+        bucketItems.setDownloadButton(downloadButton);
+        bucketItems.setDeleteButton(deleteButton);
         bucketItems.start();
         data = bucketItems.getData();
         tableView.setItems(data);
 
-
-        if(!tableView.getItems().isEmpty()) {
-
-            //downloadButton.setDisable(false);
-            //deleteButton.setDisable(false);
-        }
-        else {
-            //downloadButton.setDisable(true);
-            //deleteButton.setDisable(true);
-        }
 
     }
 

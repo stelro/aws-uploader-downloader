@@ -12,7 +12,7 @@ import java.io.File;
 
 public class AwsUploader implements Runnable {
 
-    private BasicAWSCredentials awsCreds;
+
     private File file;
     private Thread thread;
 
