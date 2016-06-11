@@ -215,7 +215,7 @@ public class Controller implements Initializable {
 
     private void listBucketItems() throws IOException {
 
-        bucketItems = new ListBucketItems("awsdowup");
+        bucketItems = new ListBucketItems(MainModel.getInstance().getBucketName());
         bucketItems.setDownloadButton(downloadButton);
         bucketItems.setDeleteButton(deleteButton);
         bucketItems.start();

@@ -5,15 +5,15 @@ Simple Amazon AWS Uploader - Downloader
 features :
 Upload/Download objects to amazon aws cloud bucket,
 list all objects, delete objects, all actions preformed
-asynchronous, get the URL from the uploaded object,
+asynchronously, get the URL from the uploaded object,
 expiration time 1 hour after upload.
 
 ## How to use the Application
 Application made with JavaFX, in order to run it
 you need the latest java JDK.
-To start using clound bucket, you should create Amazon aws s3
+To start using the application, you need to create Amazon s3 cloud bucket account
 account ( https://aws.amazon.com/s3/ ).
-When you will create new Bucket, just copy the Security credentials
+When you will create the new Bucket, just copy the Security credentials
 from Amazon (Security Key and Access ID), also the Bucket name,
 and paste it to Settings window, and you are ready to go!
 

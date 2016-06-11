@@ -1,0 +1,64 @@
+.button {
+
+    -fx-background-color: #333030;
+    -fx-display: flex;
+    -fx-overflow: hidden;
+    -fx-margin: 10px;
+    -fx-cursor: pointer;
+    -fx-user-select: none;
+    -fx-transition: all 60ms ease-in-out;
+    -fx-text-align: center;
+    -fx-white-space: nowrap;
+    -fx-text-decoration: none !important;
+    -fx-text-fill: white;
+    -fx-border-radius: 4px;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-line-height: 1.3;
+    -fx-justify-content: center;
+    -fx-align-items: center;
+    -fx-flex: 0 0 160px;
+}
+
+.button:hover {
+    -fx-background-color: #474343;
+}
+
+.button:active {
+    -fx-background-color: #595454;
+    -fx-font-weight: 300;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-line-height: 1.3;
+}
+
+.labelText {
+    -fx-text-fill: white;
+}
+
+GridPane {
+  -fx-background-color: #FFFFFF;
+}
+
+VBox {
+    -fx-background-color: #FFFFFF;
+}
+
+AnchorPane {
+  -fx-background-color: #FFFFFF;
+}
+
+BorderPane {
+  -fx-background-color: #FFFFFF;
+}
+
+TextArea {
+  -fx-control-inner-background: #333030;
+  -fx-font-size: 14px;
+  -fx-font-weight: 500;
+  -fx-line-height: 1.3;
+
+}
